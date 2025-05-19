@@ -1,3 +1,4 @@
+// src/modules/products/dto/create-product.dto.ts
 import { IsNotEmpty, IsString, IsNumber, IsOptional, IsPositive, Min } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
@@ -6,6 +7,11 @@ export class CreateProductDto {
   @IsNotEmpty()
   @IsString()
   name: string;
+
+  @ApiProperty({ description: 'Código do produto (gerado automaticamente se não fornecido)', required: false })
+  @IsOptional()
+  @IsString()
+  code?: string;
 
   @ApiProperty({ description: 'Descrição do produto', required: false })
   @IsOptional()

@@ -15,7 +15,7 @@ export class ProductsService {
       return await this.prisma.product.create({
         data: {
           ...createProductDto,
-          code: this.productCode,
+          code: this.productCode
         },
         include: { company: true },
       });

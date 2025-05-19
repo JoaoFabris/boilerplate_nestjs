@@ -13,6 +13,7 @@ import { MobileModule } from './modules/mobile/mobile.module';
 import { WebModule } from './modules/web/web.module';
 import { CompaniesModule } from './modules/companies/companies.module';
 import { ProductsModule } from './modules/products/products.module';
+import { AppController } from './app.controller'; // Importe o AppController
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { ProductsModule } from './modules/products/products.module';
     CompaniesModule,
     ProductsModule,
   ],
+  controllers: [AppController], // Adicione o AppController aqui
   providers: [
     { provide: APP_GUARD, useClass: ThrottlerGuard },
     { provide: APP_GUARD, useClass: JwtAuthGuard },

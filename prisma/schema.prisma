@@ -45,6 +45,7 @@ model Product {
   id          Int       @id @default(autoincrement())
   name        String
   description String?
+   code        String    @unique
   price       Float
   stock       Int       @default(0)
   companyId   Int

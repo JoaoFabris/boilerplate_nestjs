@@ -3,15 +3,21 @@ import { PrismaService } from '@database/PrismaService';
 import { CreateCompanyDto } from './dto/create-company.dto';
 import { UpdateCompanyDto } from './dto/update-company.dto';
 import { Prisma } from '@prisma/client';
+import capitalizeFirstLetter from '@utils/capitalizeFirstLetter';
 
 @Injectable()
 export class CompaniesService {
   constructor(private prisma: PrismaService) {}
 
   async create(createCompanyDto: CreateCompanyDto) {
+    const formattedDto = {
+        ...createCompanyDto,
+        name: capitalizeFirstLetter(createCompanyDto.name),
+      };
+    
     try {
       return await this.prisma.company.create({
-        data: createCompanyDto,
+        data: formattedDto,
       });
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {

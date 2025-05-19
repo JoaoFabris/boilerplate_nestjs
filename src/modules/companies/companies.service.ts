@@ -11,10 +11,10 @@ export class CompaniesService {
 
   async create(createCompanyDto: CreateCompanyDto) {
     const formattedDto = {
-        ...createCompanyDto,
-        name: capitalizeFirstLetter(createCompanyDto.name),
-      };
-    
+      ...createCompanyDto,
+      name: capitalizeFirstLetter(createCompanyDto.name),
+    };
+
     try {
       return await this.prisma.company.create({
         data: formattedDto,

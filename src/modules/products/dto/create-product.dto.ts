@@ -8,7 +8,10 @@ export class CreateProductDto {
   @IsString()
   name: string;
 
-  @ApiProperty({ description: 'Código do produto (gerado automaticamente se não fornecido)', required: false })
+  @ApiProperty({
+    description: 'Código do produto (gerado automaticamente se não fornecido)',
+    required: false,
+  })
   @IsOptional()
   @IsString()
   code?: string;

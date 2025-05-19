@@ -8,4 +8,3 @@ export class UpdateCompanyDto extends PartialType(CreateCompanyDto) {}
 // Todos os campos de CreateCompanyDto são copiados, mas agora são opcionais (?).
 
 // Isso é útil para operações de atualização (PATCH), onde você pode enviar apenas parte dos dados.
-

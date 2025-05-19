@@ -44,10 +44,7 @@ export class CompaniesController {
   @ApiResponse({ status: 200, description: 'Empresa atualizada com sucesso.' })
   @ApiResponse({ status: 404, description: 'Empresa não encontrada.' })
   @ApiResponse({ status: 409, description: 'CNPJ já cadastrado.' })
-  update(
-    @Param('id', ParseIntPipe) id: number,
-    @Body() updateCompanyDto: UpdateCompanyDto,
-  ) {
+  update(@Param('id', ParseIntPipe) id: number, @Body() updateCompanyDto: UpdateCompanyDto) {
     return this.companiesService.update(id, updateCompanyDto);
   }
 

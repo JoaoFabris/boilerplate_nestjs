@@ -28,6 +28,33 @@ model User {
   @@map("users")
 }
 
+model Company {
+  id          Int       @id @default(autoincrement())
+  name        String
+  cnpj        String    @unique
+  address     String?
+  phone       String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  products    Product[]
+
+  @@map("companies")
+}
+
+model Product {
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String?
+  price       Float
+  stock       Int       @default(0)
+  companyId   Int
+  company     Company   @relation(fields: [companyId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@map("products")
+}
+
 model AdminPermission {
   id        Int              @id @default(autoincrement())
   name      AdminPermissions @unique()
